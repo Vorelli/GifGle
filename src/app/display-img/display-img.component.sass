@@ -1,0 +1,73 @@
+$fullWidth: 50%
+$fullHeight: 50%
+$topBottomDuration: 1s
+$sideDuration: $topBottomDuration * ($fullHeight/$fullWidth)
+$neonPink: #ff0dbf
+
+@keyframes sideExtending
+  from
+    height: 0%
+  to
+    height: 100%
+
+@keyframes topBottomExtending
+  0%
+    width: 0%
+  100%
+    width: 100%
+  
+div#gifDisplay.middle
+  left: (100%-$fullWidth)/2
+  top: (100%-$fullHeight)/2 - 10%
+
+div#gifDisplay
+  width: $fullWidth
+  height: $fullHeight
+  position: absolute
+
+  img.gifDisplay
+    height: 100%
+    width: 100%
+    display: block
+
+  img.hidden
+    display: none !important
+  
+  div.animDiv
+    display: none
+    position: absolute
+    margin: 0px
+    background-color: $neonPink
+    box-shadow: 0px 0px 5px 0px $neonPink
+  
+  div.leftSide 
+    left: 0px
+    top: 0px
+
+  div.rightSide
+    right: 0px
+    bottom: 0px
+  
+  div.leftSide.animating, div.rightSide.animating
+    display: block
+    width: 5px
+    animation-name: sideExtending
+    animation-duration: $sideDuration
+    animation-timing-function: linear
+    animation-fill-mode: forwards
+
+  div.topSide
+    top: 0px
+    right: 0px
+
+  div.bottomSide
+    bottom: 0px
+    left: 0px
+
+  div.topSide.animating, div.bottomSide.animating
+    display: block
+    height: 5px
+    animation-name: topBottomExtending
+    animation-duration: $topBottomDuration
+    animation-timing-function: linear
+    animation-fill-mode: forwards

@@ -1,0 +1,23 @@
+<div id="searchBoxHolder" [ngClass]="searchBoxClass">
+  <div
+    id="left"
+    [style.animationDuration]="durations.side"
+    [ngClass]="classLists.left"
+  ></div>
+  <div
+    id="bottom"
+    [style.animationDuration]="durations.topB"
+    [ngClass]="classLists.bottom"
+  ></div>
+  <div
+    id="right"
+    [style.animationDuration]="durations.side"
+    [ngClass]="classLists.right"
+  ></div>
+  <div
+    id="top"
+    [style.animationDuration]="durations.topB"
+    [ngClass]="classLists.top"
+  ></div>
+  <input type="text" [style.fontSize]="fontSize" [(ngModel)]="searchString" />
+</div>

@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono|Major+Mono+Display&display=swap')
+
+$searchFont: 'IBM Plex Mono', monospace
+$fullWidth: 30%
+$fullHeight: 10%
+$topBottomDuration: 1s
+$sideDuration: $topBottomDuration * ($fullHeight/$fullWidth)
+$neonPink: #ff0dbf
+
+@keyframes sideExtending
+  from
+    height: 0%
+  to
+    height: 100%
+
+@keyframes topBottomExtending
+  0%
+    width: 0%
+  100%
+    width: 100%
+
+@keyframes moveToBottom
+  0%
+    top: 45%
+    left: 35%
+  100%
+    top: 70%
+    left: 35%
+
+div#searchBoxHolder.middle
+  left: 35%
+  top: 45%
+
+div#searchBoxHolder.moveToBottom
+  animation-duration: 1s
+  animation-name: moveToBottom
+  animation-timing-function: ease-out
+  animation-fill-mode: forwards
+
+
+div#searchBoxHolder
+  width: $fullWidth
+  height: $fullHeight
+  position: absolute
+  text-align: center
+  
+  div.animDiv
+    display: none
+    position: absolute
+    margin: 0px
+    background-color: $neonPink
+    box-shadow: 0px 0px 5px 0px $neonPink
+  
+  div.leftSide 
+    left: 0px
+    top: 0px
+
+  div.rightSide
+    right: 0px
+    bottom: 0px
+  
+  div.leftSide.animating, div.rightSide.animating
+    display: block
+    width: 5px
+    animation-name: sideExtending
+    animation-timing-function: linear
+    animation-fill-mode: forwards
+
+  div.topSide
+    top: 0px
+    right: 0px
+
+  div.bottomSide
+    bottom: 0px
+    left: 0px
+
+  div.topSide.animating, div.bottomSide.animating
+    display: block
+    height: 5px
+    animation-name: topBottomExtending
+    animation-timing-function: linear
+    animation-fill-mode: forwards
+  
+  input[type='text']
+    width: 90%
+    height: 100%
+    background-color: transparentize(#fff, 1)
+    border-width: 0px
+    color: $neonPink
+    margin: 0px 5%
+    line-height: 100%
+    font-family: $searchFont
+    //text-transform: uppercase
+
+  input[type='text']:focus
+    outline-width: 0px
