@@ -3,6 +3,7 @@ import { IClassLists, ISides } from '../shared/interfaces';
 
 @Injectable()
 export default class AnimateBoxService implements OnInit {
+  defaultDuration: number = 1;
   constructor() {}
 
   makeSearchBox(classLists: IClassLists, sides: ISides) {
@@ -17,6 +18,15 @@ export default class AnimateBoxService implements OnInit {
       });
     }
     return waitFor;
+  }
+
+  setDurations(durations, sides) {
+    durations.side =
+      (sides.left.parentElement.offsetHeight /
+        sides.left.parentElement.offsetWidth) *
+        this.defaultDuration +
+      's';
+    durations.topB = this.defaultDuration + 's';
   }
 
   ngOnInit() {}

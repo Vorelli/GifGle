@@ -73,8 +73,11 @@ export class SearchBoxComponent implements OnInit {
       right: grab('#searchBoxHolder #right'),
       top: grab('#searchBoxHolder #top')
     };
-    this.setDurations();
-    window.addEventListener('resize', this.setDurations.bind(this));
+    this.animateBox.setDurations(this.durations, this.sides);
+    window.addEventListener(
+      'resize',
+      this.animateBox.setDurations.bind(this, this.durations, this.sides)
+    );
     setTimeout(
       this.animateBox.makeSearchBox.bind(this, this.classLists, this.sides),
       1000
@@ -83,14 +86,5 @@ export class SearchBoxComponent implements OnInit {
       'keydown',
       this.keyPress.bind(this)
     );
-  }
-
-  setDurations() {
-    this.durations.side =
-      (this.sides.left.parentElement.offsetHeight /
-        this.sides.left.parentElement.offsetWidth) *
-        this.defaultDuration +
-      's';
-    this.durations.topB = this.defaultDuration + 's';
   }
 }

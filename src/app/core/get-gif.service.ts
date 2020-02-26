@@ -14,7 +14,6 @@ export class GetGifService {
         mode: 'cors'
       }
     );
-    console.log(request);
     const json = await request.json();
     if (
       json.data.images &&

@@ -1,8 +1,24 @@
 <div id="gifDisplay" [ngClass]="classList">
-  <div id="left" [ngClass]="classLists.left"></div>
-  <div id="bottom" [ngClass]="classLists.bottom"></div>
-  <div id="right" [ngClass]="classLists.right"></div>
-  <div id="top" [ngClass]="classLists.top"></div>
+  <div
+    id="left"
+    [style.animation-duration]="durations.side"
+    [ngClass]="classLists.left"
+  ></div>
+  <div
+    id="bottom"
+    [style.animation-duration]="durations.topB"
+    [ngClass]="classLists.bottom"
+  ></div>
+  <div
+    id="right"
+    [style.animation-duration]="durations.side"
+    [ngClass]="classLists.right"
+  ></div>
+  <div
+    id="top"
+    [style.animation-duration]="durations.topB"
+    [ngClass]="classLists.top"
+  ></div>
   <img [src]="temp" [ngClass]="this.classes" />
 </div>
 <app-search-box

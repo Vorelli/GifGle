@@ -22,6 +22,11 @@ export class DisplayImgComponent implements OnInit {
     top: ['topSide']
   };
 
+  durations = {
+    side: undefined,
+    topB: undefined
+  };
+
   constructor(
     private getGif: GetGifService,
     private animateBox: AnimateBoxService
@@ -66,5 +71,10 @@ export class DisplayImgComponent implements OnInit {
     ['left', 'bottom', 'right', 'top'].forEach(side => {
       this.classLists[side].push('animDiv');
     });
+    this.animateBox.setDurations(this.durations, this.sides);
+    window.addEventListener(
+      'resize',
+      this.animateBox.setDurations.bind(this, this.durations, this.sides)
+    );
   }
 }
