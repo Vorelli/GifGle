@@ -35,23 +35,24 @@ export class DisplayImgComponent implements OnInit {
     );
   }
 
-  setGif(text) {
+  async setGif(text) {
     if (this.classes.indexOf('hidden') === -1) this.classes.push('hidden');
-    this.temp = Promise.resolve(this.getGif.getGif(text))
-      .then(value => {
-        return value;
-      })
+    this.temp = await this.getGif
+      .getGif(text)
+      .then(
+        function(value) {
+          if (this.classes.indexOf('hidden') !== -1) {
+            this.classes.splice(this.classes.indexOf('hidden'), 1);
+          }
+          return value;
+        }.bind(this)
+      )
       .catch(error => {
         console.log(error);
+        (<HTMLInputElement>document.querySelector('input[type="text"]')).value =
+          'Bad Query. Try something else!';
         return null;
       });
-    this.temp.then(
-      function() {
-        if (this.classes.indexOf('hidden') !== -1) {
-          this.classes.splice(this.classes.indexOf('hidden'), 1);
-        }
-      }.bind(this)
-    );
   }
 
   ngOnInit(): void {

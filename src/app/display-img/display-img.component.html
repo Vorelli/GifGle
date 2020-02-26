@@ -3,7 +3,7 @@
   <div id="bottom" [ngClass]="classLists.bottom"></div>
   <div id="right" [ngClass]="classLists.right"></div>
   <div id="top" [ngClass]="classLists.top"></div>
-  <img [src]="temp | async" [ngClass]="this.classes" />
+  <img [src]="temp" [ngClass]="this.classes" />
 </div>
 <app-search-box
   [animateGifContainer]="animate.bind(this)"
